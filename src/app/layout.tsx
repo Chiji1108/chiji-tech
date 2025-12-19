@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Shingo Chijiiwa",
+  title: "Shingo Chijiiwa / CHIJI TECH",
   description:
     "身近な人の悩みを解決するサービス開発が生き甲斐のソフトウェアエンジニア",
 };
