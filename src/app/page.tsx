@@ -54,6 +54,10 @@ const workItems = [
     badge: "副業",
     description:
       "テンプレートを使った小規模から中規模までのホームページ制作をしてます。制作に付随するヒアリングから内容の提案など諸々全てやります。それだけでなくホームページに関連して、アクセス動画の制作や地図制作、はたまたイメージソングの音楽制作など何でもしてます。医療関係の方が多いです。",
+    cta: {
+      label: "詳細を見る",
+      href: "/hp",
+    },
   },
   {
     title: "IT何でも屋",
@@ -136,6 +140,17 @@ export default function Home() {
                 <p className="text-pretty text-sm text-zinc-600 leading-relaxed dark:text-zinc-400">
                   {item.description}
                 </p>
+
+                {item.cta !== undefined && (
+                  <div className="mt-4">
+                    <a
+                      className="inline-flex items-center justify-center rounded-full border border-zinc-200 bg-white px-4 py-2 text-sm text-zinc-700 shadow-sm hover:bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:bg-zinc-800"
+                      href={item.cta.href}
+                    >
+                      {item.cta.label}
+                    </a>
+                  </div>
+                )}
 
                 {item.tags !== undefined && (
                   <div className="mt-4 flex flex-wrap gap-2">
