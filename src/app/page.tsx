@@ -78,7 +78,7 @@ export default function Home() {
               src="/me.jpg"
               width={120}
             />
-            <div className="-inset-1 -z-10 absolute rounded-full bg-linear-to-br from-zinc-200 to-zinc-300 opacity-50 blur-lg dark:from-zinc-700 dark:to-zinc-800" />
+            <div className="absolute -inset-1 -z-10 rounded-full bg-linear-to-br from-zinc-200 to-zinc-300 opacity-50 blur-lg dark:from-zinc-700 dark:to-zinc-800" />
           </div>
 
           <h1 className="font-semibold text-2xl tracking-tight">
@@ -105,14 +105,17 @@ export default function Home() {
         {/* Bio Section */}
         <section className="mt-12">
           <p className="text-pretty text-center text-zinc-600 leading-relaxed dark:text-zinc-400">
-            身近な人の悩みを解決するサービス開発が生き甲斐です。昔からモノづくりが好きで、それに関連した技術を学ぶことが趣味です。時々アウトプットもします。あとサウナとシーシャとドライブが好きです。
+            身近な人の悩みを解決するサービス開発が生き甲斐です。昔からモノづくりが好きで、それに関連した技術を学ぶことが趣味です。時々アウトプットもします。
+          </p>
+          <p className="text-pretty text-center text-zinc-600 leading-relaxed dark:text-zinc-400">
+            あとサウナとシーシャとドライブが好きです。
           </p>
         </section>
 
         {/* Work Section */}
         <section className="mt-16">
           <h2 className="mb-8 text-center font-semibold text-lg text-zinc-900 tracking-tight dark:text-zinc-100">
-            お仕事
+            CHIJI TECH 事業
           </h2>
 
           <div className="space-y-8">
