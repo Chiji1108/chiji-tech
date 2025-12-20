@@ -209,6 +209,17 @@ export default function HomePageProductionPage() {
                   </a>
                 </dd>
               </div>
+              <div className="grid grid-cols-1 gap-1 sm:grid-cols-3 sm:gap-4">
+                <dt className="text-zinc-500 dark:text-zinc-400">特商法表記</dt>
+                <dd className="text-zinc-900 sm:col-span-2 dark:text-zinc-100">
+                  <Link
+                    className="underline underline-offset-4 hover:text-zinc-700 dark:hover:text-zinc-300"
+                    href="/tokusho"
+                  >
+                    特定商取引法に基づく表記
+                  </Link>
+                </dd>
+              </div>
             </dl>
           </Card>
           <p className="mt-4 text-sm text-zinc-500 leading-relaxed dark:text-zinc-500">

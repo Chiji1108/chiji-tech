@@ -1,5 +1,6 @@
 import { Github, Linkedin } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 function ZennIcon({ className }: { className?: string }) {
   return (
@@ -168,6 +169,15 @@ export default function Home() {
             ))}
           </div>
         </section>
+
+        <footer className="mt-16 flex items-center justify-center gap-4 text-sm text-zinc-500 dark:text-zinc-400">
+          <Link
+            className="underline underline-offset-4 hover:text-zinc-700 dark:hover:text-zinc-300"
+            href="/tokusho"
+          >
+            特定商取引法に基づく表記
+          </Link>
+        </footer>
       </main>
     </div>
   );
