@@ -4,6 +4,19 @@ import Link from "next/link";
 
 const CONTACT_EMAIL = "contact@chiji.tech";
 
+const APP_STORE_URL =
+  "https://apps.apple.com/jp/app/paylog-%E6%94%AF%E6%89%95%E3%81%84%E6%83%85%E5%A0%B1%E3%81%AE%E6%95%B4%E7%90%86/id6763954131";
+
+const TECH_BADGES = [
+  "SwiftUI",
+  "SwiftData",
+  "Swift Charts",
+  "CloudKit",
+  "EventKit",
+  "TipKit",
+  "StoreKit",
+];
+
 export const metadata: Metadata = {
   title: "PayLog | CHIJI TECH",
   description: "PayLogのサポート情報とプライバシーポリシーを掲載しています。",
@@ -74,6 +87,30 @@ export default function PayLogPage() {
           <p className="mt-5 max-w-md text-pretty text-sm text-zinc-600 leading-relaxed dark:text-zinc-400">
             サブスク・クレジットカード・銀行口座などの支払い情報を整理・記録できるアプリです。
           </p>
+          <div className="mt-7 flex max-w-lg flex-wrap justify-center gap-2">
+            {TECH_BADGES.map((badge) => (
+              <span
+                className="rounded-md border border-zinc-200 bg-white px-2.5 py-1 font-mono text-xs text-zinc-500 shadow-sm dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400"
+                key={badge}
+              >
+                {badge}
+              </span>
+            ))}
+          </div>
+          <a
+            aria-label="PayLogをApp Storeで見る"
+            className="mt-8 inline-flex transition-opacity hover:opacity-80"
+            href={APP_STORE_URL}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <Image
+              alt="App Storeからダウンロード"
+              height={40}
+              src="/appstore.svg"
+              width={109}
+            />
+          </a>
         </header>
 
         <Section title="PayLog サポート">
