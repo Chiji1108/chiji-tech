@@ -71,6 +71,14 @@ const payLogTechBadges = [
   "StoreKit",
 ];
 
+const driveCostTechBadges = [
+  "Jetpack Compose",
+  "Material Design 3",
+  "Navigation 3",
+  "Room",
+  "Konfetti",
+];
+
 const workItems = [
   {
     title: "ソフトウェア開発",
@@ -84,14 +92,24 @@ const workItems = [
       ["Vercel", "Cloudflare"],
       ["Expo", "SwiftUI"],
     ],
-    product: {
-      name: "PayLog",
-      description:
-        "サブスク・クレジットカード・銀行口座などの支払い情報を整理・記録できるiOSアプリです。",
-      href: "/paylog",
-      image: "/paylog.png",
-      techBadges: payLogTechBadges,
-    },
+    products: [
+      {
+        name: "PayLog",
+        description:
+          "サブスク・クレジットカード・銀行口座などの支払い情報を整理・記録できるiOSアプリです。",
+        href: "/paylog",
+        image: "/paylog.png",
+        techBadges: payLogTechBadges,
+      },
+      {
+        name: "DriveCost",
+        description:
+          "給油記録から実燃費を計算し、ドライブ時のガソリン代を見積もれるシンプルなAndroidアプリです。",
+        href: "/drivecost",
+        image: "/drivecost.png",
+        techBadges: driveCostTechBadges,
+      },
+    ],
   },
   {
     title: "ホームページ制作",
@@ -198,43 +216,48 @@ export default function Home() {
                   </div>
                 )}
 
-                {item.product !== undefined && (
-                  <div className="mt-6 border-zinc-200 border-t pt-5 dark:border-zinc-800">
-                    <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
-                      <Image
-                        alt={item.product.name}
-                        className="rounded-2xl shadow-sm ring-1 ring-zinc-200 dark:ring-zinc-800"
-                        height={64}
-                        src={item.product.image}
-                        width={64}
-                      />
-                      <div className="min-w-0 flex-1">
-                        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                          <h4 className="font-medium text-zinc-900 dark:text-zinc-100">
-                            {item.product.name}
-                          </h4>
-                          <Link
-                            className="inline-flex w-fit items-center justify-center rounded-full border border-zinc-200 bg-white px-4 py-2 text-sm text-zinc-700 shadow-sm hover:bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:bg-zinc-800"
-                            href={item.product.href}
-                          >
-                            詳細を見る
-                          </Link>
-                        </div>
-                        <p className="mt-2 text-pretty text-sm text-zinc-600 leading-relaxed dark:text-zinc-400">
-                          {item.product.description}
-                        </p>
-                        <div className="mt-4 flex flex-wrap gap-2">
-                          {item.product.techBadges.map((badge) => (
-                            <span
-                              className="rounded-md border border-zinc-200 bg-zinc-50 px-2 py-1 font-mono text-xs text-zinc-500 dark:border-zinc-800 dark:bg-zinc-800/50 dark:text-zinc-500"
-                              key={badge}
+                {item.products !== undefined && (
+                  <div className="mt-6 space-y-5 border-zinc-200 border-t pt-5 dark:border-zinc-800">
+                    {item.products.map((product) => (
+                      <div
+                        className="flex flex-col gap-4 sm:flex-row sm:items-start"
+                        key={product.name}
+                      >
+                        <Image
+                          alt={product.name}
+                          className="rounded-2xl shadow-sm ring-1 ring-zinc-200 dark:ring-zinc-800"
+                          height={64}
+                          src={product.image}
+                          width={64}
+                        />
+                        <div className="min-w-0 flex-1">
+                          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                            <h4 className="font-medium text-zinc-900 dark:text-zinc-100">
+                              {product.name}
+                            </h4>
+                            <Link
+                              className="inline-flex w-fit items-center justify-center rounded-full border border-zinc-200 bg-white px-4 py-2 text-sm text-zinc-700 shadow-sm hover:bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:bg-zinc-800"
+                              href={product.href}
                             >
-                              {badge}
-                            </span>
-                          ))}
+                              詳細を見る
+                            </Link>
+                          </div>
+                          <p className="mt-2 text-pretty text-sm text-zinc-600 leading-relaxed dark:text-zinc-400">
+                            {product.description}
+                          </p>
+                          <div className="mt-4 flex flex-wrap gap-2">
+                            {product.techBadges.map((badge) => (
+                              <span
+                                className="rounded-md border border-zinc-200 bg-zinc-50 px-2 py-1 font-mono text-xs text-zinc-500 dark:border-zinc-800 dark:bg-zinc-800/50 dark:text-zinc-500"
+                                key={badge}
+                              >
+                                {badge}
+                              </span>
+                            ))}
+                          </div>
                         </div>
                       </div>
-                    </div>
+                    ))}
                   </div>
                 )}
 
