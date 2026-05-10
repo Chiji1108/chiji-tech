@@ -4,6 +4,9 @@ import Link from "next/link";
 
 const CONTACT_EMAIL = "contact@chiji.tech";
 
+const GOOGLE_PLAY_URL =
+  "https://play.google.com/store/apps/details?id=tech.chiji.drivecost";
+
 const TECH_BADGES = [
   "Jetpack Compose",
   "Material Design 3",
@@ -93,6 +96,20 @@ export default function DriveCostPage() {
               </span>
             ))}
           </div>
+          <a
+            aria-label="DriveCostをGoogle Playで見る"
+            className="mt-8 inline-flex transition-opacity hover:opacity-80"
+            href={GOOGLE_PLAY_URL}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <Image
+              alt="Google Playで手に入れよう"
+              height={40}
+              src="/googleplay.svg"
+              width={135}
+            />
+          </a>
         </header>
 
         <Section title="DriveCost サポート">
