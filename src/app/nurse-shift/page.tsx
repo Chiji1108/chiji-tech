@@ -11,6 +11,7 @@ const TECH_BADGES = [
   "HeroUI",
   "Uniwind",
   "FlashList",
+  "Upstash Redis",
 ];
 
 export const metadata: Metadata = {

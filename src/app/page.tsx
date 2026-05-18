@@ -86,6 +86,7 @@ const nurseShiftTechBadges = [
   "HeroUI",
   "Uniwind",
   "FlashList",
+  "Upstash Redis",
 ];
 
 const workItems = [
