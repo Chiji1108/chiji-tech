@@ -79,6 +79,15 @@ const driveCostTechBadges = [
   "Konfetti",
 ];
 
+const nurseShiftTechBadges = [
+  "Expo",
+  "Jazz.tools",
+  "local-first",
+  "HeroUI",
+  "Uniwind",
+  "FlashList",
+];
+
 const workItems = [
   {
     title: "ソフトウェア開発",
@@ -108,6 +117,13 @@ const workItems = [
         href: "/drivecost",
         image: "/drivecost.png",
         techBadges: driveCostTechBadges,
+      },
+      {
+        name: "ナースシフト",
+        description: "看護師のシフト管理と共有をシンプルにするアプリです。",
+        href: "/nurse-shift",
+        image: "/nurse-shift.png",
+        techBadges: nurseShiftTechBadges,
       },
     ],
   },

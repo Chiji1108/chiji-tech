@@ -13,9 +13,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Shingo Chijiiwa / CHIJI TECH",
   description:
     "身近な人の悩みを解決するサービス開発が生き甲斐のソフトウェアエンジニア",
+  metadataBase: new URL("https://chiji.tech"),
+  title: "Shingo Chijiiwa / CHIJI TECH",
 };
 
 export default function RootLayout({
