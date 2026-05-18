@@ -9,6 +9,7 @@ interface InvitePageProps {
 }
 
 const APP_NAME = "ナースシフト";
+const APP_SCHEME = "nurse-shift";
 
 const loadInvite = async (params: InvitePageProps["params"]) => {
   const { inviteId } = await params;
@@ -42,7 +43,7 @@ export async function generateMetadata({
 
 export default async function InvitePage({ params }: InvitePageProps) {
   const { invite, inviteId } = await loadInvite(params);
-  const appUrl = `nurseshift://invite/${encodeURIComponent(inviteId)}`;
+  const appUrl = `${APP_SCHEME}://invite/${encodeURIComponent(inviteId)}`;
 
   return (
     <div className="flex min-h-screen justify-center bg-zinc-50 dark:bg-zinc-950">
