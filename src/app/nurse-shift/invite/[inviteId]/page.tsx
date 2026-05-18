@@ -2,29 +2,29 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { verifyInviteToken } from "@/lib/nurse-shift/invites";
+import { getInvite as getStoredInvite } from "@/lib/nurse-shift/invites";
 
 interface InvitePageProps {
-  params: Promise<{ token: string }>;
+  params: Promise<{ inviteId: string }>;
 }
 
 const APP_NAME = "ナースシフト";
 
-const getInvite = async (params: InvitePageProps["params"]) => {
-  const { token } = await params;
-  const invite = verifyInviteToken(token);
+const loadInvite = async (params: InvitePageProps["params"]) => {
+  const { inviteId } = await params;
+  const invite = await getStoredInvite(inviteId);
 
   if (!invite) {
     notFound();
   }
 
-  return { invite, token };
+  return { invite, inviteId };
 };
 
 export async function generateMetadata({
   params,
 }: InvitePageProps): Promise<Metadata> {
-  const { invite } = await getInvite(params);
+  const { invite } = await loadInvite(params);
   const title = `${invite.groupName}への招待 | ${APP_NAME}`;
   const description = `${invite.groupName}のシフト共有グループに参加できます。`;
 
@@ -41,8 +41,8 @@ export async function generateMetadata({
 }
 
 export default async function InvitePage({ params }: InvitePageProps) {
-  const { invite, token } = await getInvite(params);
-  const appUrl = `nurseshift://invite/${encodeURIComponent(token)}`;
+  const { invite, inviteId } = await loadInvite(params);
+  const appUrl = `nurseshift://invite/${encodeURIComponent(inviteId)}`;
 
   return (
     <div className="flex min-h-screen justify-center bg-zinc-50 dark:bg-zinc-950">

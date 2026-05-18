@@ -1,6 +1,6 @@
 import {
   buildInviteUrl,
-  createInviteToken,
+  createInvite,
   INVITE_EXPIRES_IN_MS,
   normalizeInviteInput,
 } from "@/lib/nurse-shift/invites";
@@ -25,12 +25,12 @@ export async function POST(request: Request) {
   }
 
   try {
-    const { token } = createInviteToken(input);
+    const { inviteId } = await createInvite(input);
 
     return Response.json({
       expiresInMs: INVITE_EXPIRES_IN_MS,
-      token,
-      url: buildInviteUrl(request, token),
+      inviteId,
+      url: buildInviteUrl(request, inviteId),
     });
   } catch (error) {
     const message =

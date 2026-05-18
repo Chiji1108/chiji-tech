@@ -1,13 +1,13 @@
-import { verifyInviteToken } from "@/lib/nurse-shift/invites";
+import { getInvite } from "@/lib/nurse-shift/invites";
 
 export const runtime = "nodejs";
 
 export async function GET(
   _request: Request,
-  { params }: { params: Promise<{ token: string }> }
+  { params }: { params: Promise<{ inviteId: string }> }
 ) {
-  const { token } = await params;
-  const invite = verifyInviteToken(token);
+  const { inviteId } = await params;
+  const invite = await getInvite(inviteId);
 
   if (!invite) {
     return Response.json({ error: "Invite not found" }, { status: 404 });
