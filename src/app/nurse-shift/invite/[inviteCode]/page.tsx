@@ -38,7 +38,7 @@ export async function generateMetadata({
   }
 
   const title = `${invite.groupName}への招待 | ${APP_NAME}`;
-  const description = `${invite.groupName}のシフト共有グループに参加できます。`;
+  const description = `${invite.groupName}に参加できます。`;
 
   return {
     description,
@@ -90,7 +90,7 @@ export default async function InvitePage({ params }: InvitePageProps) {
           {invite ? (
             <>
               <p className="mt-5 max-w-md text-pretty text-sm text-zinc-600 leading-relaxed dark:text-zinc-400">
-                このシフト共有グループへの招待リンクです。アプリを開いて、グループ内で表示する名前を入力すると参加できます。
+                このグループへの招待リンクです。アプリを開いて、グループ内で表示する名前を入力すると参加できます。
               </p>
 
               <a

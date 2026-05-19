@@ -17,10 +17,10 @@ const TECH_BADGES = [
 export const metadata: Metadata = {
   title: "ナースシフト | CHIJI TECH",
   description:
-    "ナースシフトは、看護師のシフト管理と共有をシンプルにするアプリです。",
+    "ナースシフトは、看護師のシフト管理とグループ共有をシンプルにするアプリです。",
   openGraph: {
     description:
-      "看護師のシフト管理と共有をシンプルにするアプリです。共有グループを作り、招待リンクから参加できます。",
+      "看護師のシフト管理とグループ共有をシンプルにするアプリです。グループを作り、招待リンクから参加できます。",
     images: [{ url: "/nurse-shift.png" }],
     title: "ナースシフト | CHIJI TECH",
     type: "website",
@@ -91,7 +91,7 @@ export default function NurseShiftPage() {
             ナースシフト
           </h1>
           <p className="mt-5 max-w-md text-pretty text-sm text-zinc-600 leading-relaxed dark:text-zinc-400">
-            看護師のシフト管理と共有をシンプルにするアプリです。
+            看護師のシフト管理とグループ共有をシンプルにするアプリです。
           </p>
           <div className="mt-7 flex max-w-lg flex-wrap justify-center gap-2">
             {TECH_BADGES.map((badge) => (
@@ -123,7 +123,7 @@ export default function NurseShiftPage() {
         <Section title="プライバシーポリシー">
           <p>
             {
-              "ナースシフトは、シフト情報をアプリの同期基盤に保存し、共有グループ情報と招待コードをConvexに保存します。招待リンクには参加用の招待コードが含まれます。"
+              "ナースシフトは、シフト情報をアプリの同期基盤に保存し、グループ情報と招待コードをConvexに保存します。招待リンクには参加用の招待コードが含まれます。"
             }
           </p>
           <p>第三者へのデータ提供は行いません。</p>
