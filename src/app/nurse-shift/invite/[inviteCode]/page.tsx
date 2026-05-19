@@ -1,31 +1,42 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { notFound } from "next/navigation";
-import { getInvite as getStoredInvite } from "@/lib/nurse-shift/invites";
+import { getInvitePreview } from "@/lib/nurse-shift/invites";
 
 interface InvitePageProps {
-  params: Promise<{ inviteId: string }>;
+  params: Promise<{ inviteCode: string }>;
 }
 
 const APP_NAME = "ナースシフト";
 const APP_SCHEME = "nurse-shift";
+const INVALID_INVITE_MESSAGE = "この招待リンクは無効です";
 
 const loadInvite = async (params: InvitePageProps["params"]) => {
-  const { inviteId } = await params;
-  const invite = await getStoredInvite(inviteId);
+  const { inviteCode } = await params;
+  const normalizedInviteCode = inviteCode.trim();
 
-  if (!invite) {
-    notFound();
+  if (!normalizedInviteCode) {
+    return { inviteCode: normalizedInviteCode };
   }
 
-  return { invite, inviteId };
+  return {
+    invite: await getInvitePreview(normalizedInviteCode),
+    inviteCode: normalizedInviteCode,
+  };
 };
 
 export async function generateMetadata({
   params,
 }: InvitePageProps): Promise<Metadata> {
   const { invite } = await loadInvite(params);
+
+  if (!invite) {
+    return {
+      description: INVALID_INVITE_MESSAGE,
+      title: `${INVALID_INVITE_MESSAGE} | ${APP_NAME}`,
+    };
+  }
+
   const title = `${invite.groupName}への招待 | ${APP_NAME}`;
   const description = `${invite.groupName}のシフト共有グループに参加できます。`;
 
@@ -42,8 +53,8 @@ export async function generateMetadata({
 }
 
 export default async function InvitePage({ params }: InvitePageProps) {
-  const { invite, inviteId } = await loadInvite(params);
-  const appUrl = `${APP_SCHEME}://invite/${encodeURIComponent(inviteId)}`;
+  const { invite, inviteCode } = await loadInvite(params);
+  const appUrl = `${APP_SCHEME}://invite/${encodeURIComponent(inviteCode)}`;
 
   return (
     <div className="flex min-h-screen justify-center bg-zinc-50 dark:bg-zinc-950">
@@ -74,18 +85,26 @@ export default async function InvitePage({ params }: InvitePageProps) {
             {APP_NAME}
           </p>
           <h1 className="mt-2 font-semibold text-3xl text-zinc-900 tracking-tight dark:text-zinc-100">
-            {invite.groupName}
+            {invite?.groupName ?? "招待"}
           </h1>
-          <p className="mt-5 max-w-md text-pretty text-sm text-zinc-600 leading-relaxed dark:text-zinc-400">
-            このシフト共有グループへの招待リンクです。アプリを開いて、グループ内で表示する名前を入力すると参加できます。
-          </p>
+          {invite ? (
+            <>
+              <p className="mt-5 max-w-md text-pretty text-sm text-zinc-600 leading-relaxed dark:text-zinc-400">
+                このシフト共有グループへの招待リンクです。アプリを開いて、グループ内で表示する名前を入力すると参加できます。
+              </p>
 
-          <a
-            className="mt-8 inline-flex h-11 items-center justify-center rounded-full bg-zinc-900 px-6 font-medium text-sm text-white shadow-sm hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-950 dark:hover:bg-zinc-300"
-            href={appUrl}
-          >
-            アプリで開く
-          </a>
+              <a
+                className="mt-8 inline-flex h-11 items-center justify-center rounded-full bg-zinc-900 px-6 font-medium text-sm text-white shadow-sm hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-950 dark:hover:bg-zinc-300"
+                href={appUrl}
+              >
+                アプリで開く
+              </a>
+            </>
+          ) : (
+            <p className="mt-5 max-w-md text-pretty text-red-600 text-sm leading-relaxed dark:text-red-400">
+              {INVALID_INVITE_MESSAGE}
+            </p>
+          )}
 
           <div className="mt-8 w-full max-w-md rounded-2xl border border-zinc-200 bg-white p-5 text-left text-sm text-zinc-600 leading-relaxed shadow-sm dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400">
             <p className="font-medium text-zinc-900 dark:text-zinc-100">

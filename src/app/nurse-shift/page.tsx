@@ -11,7 +11,7 @@ const TECH_BADGES = [
   "HeroUI",
   "Uniwind",
   "FlashList",
-  "Upstash Redis",
+  "Convex",
 ];
 
 export const metadata: Metadata = {
@@ -123,7 +123,7 @@ export default function NurseShiftPage() {
         <Section title="プライバシーポリシー">
           <p>
             {
-              "ナースシフトは、シフト情報と共有グループ情報をアプリの同期基盤に保存します。招待リンクの発行と確認のために、グループID、グループ名、招待期限を含む署名付きトークンを使用します。"
+              "ナースシフトは、シフト情報をアプリの同期基盤に保存し、共有グループ情報と招待コードをConvexに保存します。招待リンクには参加用の招待コードが含まれます。"
             }
           </p>
           <p>第三者へのデータ提供は行いません。</p>
