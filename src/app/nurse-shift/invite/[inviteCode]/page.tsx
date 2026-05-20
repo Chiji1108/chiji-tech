@@ -10,6 +10,8 @@ interface InvitePageProps {
 const APP_NAME = "ナースシフト";
 const APP_SCHEME = "nurse-shift";
 const INVALID_INVITE_MESSAGE = "この招待リンクは無効です";
+const getGroupLabel = (invite: { groupEmoji: string; groupName: string }) =>
+  `${invite.groupEmoji} ${invite.groupName}`;
 
 const loadInvite = async (params: InvitePageProps["params"]) => {
   const { inviteCode } = await params;
@@ -37,8 +39,9 @@ export async function generateMetadata({
     };
   }
 
-  const title = `${invite.groupName}への招待 | ${APP_NAME}`;
-  const description = `${invite.groupName}に参加できます。`;
+  const groupLabel = getGroupLabel(invite);
+  const title = `${groupLabel}への招待 | ${APP_NAME}`;
+  const description = `${groupLabel}に参加できます。`;
 
   return {
     description,
@@ -55,6 +58,7 @@ export async function generateMetadata({
 export default async function InvitePage({ params }: InvitePageProps) {
   const { invite, inviteCode } = await loadInvite(params);
   const appUrl = `${APP_SCHEME}://invite/${encodeURIComponent(inviteCode)}`;
+  const groupLabel = invite ? getGroupLabel(invite) : "招待";
 
   return (
     <div className="flex min-h-screen justify-center bg-zinc-50 dark:bg-zinc-950">
@@ -85,7 +89,7 @@ export default async function InvitePage({ params }: InvitePageProps) {
             {APP_NAME}
           </p>
           <h1 className="mt-2 font-semibold text-3xl text-zinc-900 tracking-tight dark:text-zinc-100">
-            {invite?.groupName ?? "招待"}
+            {groupLabel}
           </h1>
           {invite ? (
             <>

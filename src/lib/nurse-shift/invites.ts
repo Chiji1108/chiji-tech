@@ -2,6 +2,7 @@ const TRAILING_SLASH_REGEX = /\/$/;
 
 type InvitePreviewResponse =
   | {
+      groupEmoji: string;
       groupName: string;
       ok: true;
     }
@@ -38,5 +39,8 @@ export const getInvitePreview = async (inviteCode: string) => {
     return;
   }
 
-  return { groupName: preview.groupName };
+  return {
+    groupEmoji: preview.groupEmoji,
+    groupName: preview.groupName,
+  };
 };
