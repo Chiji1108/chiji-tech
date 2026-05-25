@@ -12,10 +12,10 @@ type InvitePreviewResponse =
     };
 
 const getConvexHttpUrl = () => {
-  const convexHttpUrl = process.env.NURSE_SHIFT_CONVEX_HTTP_URL?.trim();
+  const convexHttpUrl = process.env.POCHICAL_CONVEX_HTTP_URL?.trim();
 
   if (!convexHttpUrl) {
-    throw new Error("NURSE_SHIFT_CONVEX_HTTP_URL is not configured");
+    throw new Error("POCHICAL_CONVEX_HTTP_URL is not configured");
   }
 
   return convexHttpUrl.replace(TRAILING_SLASH_REGEX, "");

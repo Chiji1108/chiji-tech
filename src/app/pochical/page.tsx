@@ -15,16 +15,16 @@ const TECH_BADGES = [
 ];
 
 export const metadata: Metadata = {
-  title: "ナースシフト | CHIJI TECH",
+  title: "ポチカレ | CHIJI TECH",
   description:
-    "ナースシフトは、看護師のシフト管理とグループ共有をシンプルにするアプリです。",
+    "ポチカレは、看護師のシフト管理とグループ共有をシンプルにするアプリです。",
   openGraph: {
     description:
       "看護師のシフト管理とグループ共有をシンプルにするアプリです。グループを作り、招待リンクから参加できます。",
-    images: [{ url: "/nurse-shift.png" }],
-    title: "ナースシフト | CHIJI TECH",
+    images: [{ url: "/pochical.png" }],
+    title: "ポチカレ | CHIJI TECH",
     type: "website",
-    url: "https://chiji.tech/nurse-shift",
+    url: "https://chiji.tech/pochical",
   },
 };
 
@@ -58,7 +58,7 @@ function ContactLink() {
   );
 }
 
-export default function NurseShiftPage() {
+export default function PochicalPage() {
   return (
     <div className="flex min-h-screen justify-center bg-zinc-50 dark:bg-zinc-950">
       <main className="w-full max-w-2xl px-6 py-16 sm:px-8 sm:py-24">
@@ -74,11 +74,11 @@ export default function NurseShiftPage() {
         <header className="flex flex-col items-center py-10 text-center sm:py-14">
           <div className="relative">
             <Image
-              alt="ナースシフト"
+              alt="ポチカレ"
               className="rounded-3xl shadow-sm ring-1 ring-zinc-200 dark:ring-zinc-800"
               height={104}
               priority
-              src="/nurse-shift.png"
+              src="/pochical.png"
               width={104}
             />
             <div className="absolute -inset-2 -z-10 rounded-3xl bg-zinc-200 opacity-50 blur-lg dark:bg-zinc-800" />
@@ -88,7 +88,7 @@ export default function NurseShiftPage() {
             CHIJI TECH
           </p>
           <h1 className="mt-2 font-semibold text-3xl text-zinc-900 tracking-tight dark:text-zinc-100">
-            ナースシフト
+            ポチカレ
           </h1>
           <p className="mt-5 max-w-md text-pretty text-sm text-zinc-600 leading-relaxed dark:text-zinc-400">
             看護師のシフト管理とグループ共有をシンプルにするアプリです。
@@ -113,7 +113,7 @@ export default function NurseShiftPage() {
           </div>
         </header>
 
-        <Section title="ナースシフト サポート">
+        <Section title="ポチカレ サポート">
           <p>ご質問・不具合報告・ご要望は下記までご連絡ください。</p>
           <p>
             メール: <ContactLink />
@@ -123,7 +123,7 @@ export default function NurseShiftPage() {
         <Section title="プライバシーポリシー">
           <p>
             {
-              "ナースシフトは、シフト情報をアプリの同期基盤に保存し、グループ情報と招待コードをConvexに保存します。招待リンクには参加用の招待コードが含まれます。"
+              "ポチカレは、シフト情報をアプリの同期基盤に保存し、グループ情報と招待コードをConvexに保存します。招待リンクには参加用の招待コードが含まれます。"
             }
           </p>
           <p>第三者へのデータ提供は行いません。</p>

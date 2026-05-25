@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { getInvitePreview } from "@/lib/nurse-shift/invites";
+import { getInvitePreview } from "@/lib/pochical/invites";
 
 interface InvitePageProps {
   params: Promise<{ inviteCode: string }>;
 }
 
-const APP_NAME = "ナースシフト";
-const APP_SCHEME = "nurse-shift";
+const APP_NAME = "ポチカレ";
+const APP_SCHEME = "pochical";
 const INVALID_INVITE_MESSAGE = "この招待リンクは無効です";
 const getGroupLabel = (invite: { groupEmoji: string; groupName: string }) =>
   `${invite.groupEmoji} ${invite.groupName}`;
@@ -47,7 +47,7 @@ export async function generateMetadata({
     description,
     openGraph: {
       description,
-      images: [{ url: "/nurse-shift.png" }],
+      images: [{ url: "/pochical.png" }],
       title,
       type: "website",
     },
@@ -66,7 +66,7 @@ export default async function InvitePage({ params }: InvitePageProps) {
         <nav className="mb-12 flex justify-end">
           <Link
             className="rounded-full border border-zinc-200 bg-white px-4 py-2 text-sm text-zinc-700 shadow-sm hover:bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:bg-zinc-800"
-            href="/nurse-shift"
+            href="/pochical"
           >
             アプリ紹介へ
           </Link>
@@ -79,7 +79,7 @@ export default async function InvitePage({ params }: InvitePageProps) {
               className="rounded-3xl shadow-sm ring-1 ring-zinc-200 dark:ring-zinc-800"
               height={104}
               priority
-              src="/nurse-shift.png"
+              src="/pochical.png"
               width={104}
             />
             <div className="absolute -inset-2 -z-10 rounded-3xl bg-zinc-200 opacity-50 blur-lg dark:bg-zinc-800" />

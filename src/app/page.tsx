@@ -79,7 +79,7 @@ const driveCostTechBadges = [
   "Konfetti",
 ];
 
-const nurseShiftTechBadges = [
+const pochicalTechBadges = [
   "Expo",
   "Jazz.tools",
   "local-first",
@@ -120,11 +120,11 @@ const workItems = [
         techBadges: driveCostTechBadges,
       },
       {
-        name: "ナースシフト",
+        name: "ポチカレ",
         description: "看護師のシフト管理と共有をシンプルにするアプリです。",
-        href: "/nurse-shift",
-        image: "/nurse-shift.png",
-        techBadges: nurseShiftTechBadges,
+        href: "/pochical",
+        image: "/pochical.png",
+        techBadges: pochicalTechBadges,
       },
     ],
   },
