@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import me from "@/assets/me.jpg";
 import Page from "@/components/page.astro";
+import PillLink from "@/components/pill-link.astro";
 import { apps } from "@/data/apps";
 import { socials } from "@/data/socials";
 
@@ -51,9 +52,6 @@ const works: Work[] = [
       "ITに疎いから自分では出来ないけど、業者に頼むほどでもないな…っていう方々向けに、簡単なDX導入や、ITに関する何でも屋さんをしてます。ドメイン、メールアドレスの取得から、パソコン自体のお掃除やパーツ交換、ソフトのアップデートから新ソフトの使い方のレクチャー、MiniDVテープやVHSテープのダビングなど何でもやります。家族経営の方が多いです。",
   },
 ];
-
-const pillLink =
-  "rounded-full border border-zinc-200 bg-white px-4 py-2 text-sm text-zinc-700 shadow-sm hover:bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:bg-zinc-800";
 ---
 
 <Page
@@ -164,12 +162,11 @@ const pillLink =
                         <h4 class="font-medium text-zinc-900 dark:text-zinc-100">
                           {app.name}
                         </h4>
-                        <a
-                          class={`inline-flex w-fit items-center justify-center ${pillLink}`}
-                          href={app.href}
-                        >
-                          詳細を見る
-                        </a>
+                        <PillLink
+                class="inline-flex w-fit items-center justify-center"
+                href={app.href}
+                text="詳細を見る"
+              />
                       </div>
                       <p class="mt-2 text-pretty text-sm text-zinc-600 leading-relaxed dark:text-zinc-400">
                         {app.summary}
@@ -189,12 +186,11 @@ const pillLink =
 
             {work.cta !== undefined && (
               <div class="mt-4">
-                <a
-                  class={`inline-flex items-center justify-center ${pillLink}`}
-                  href={work.cta.href}
-                >
-                  {work.cta.label}
-                </a>
+                <PillLink
+              class="inline-flex items-center justify-center"
+              href={work.cta.href}
+              text={work.cta.label}
+            />
               </div>
             )}
           </article>

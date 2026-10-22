@@ -1,8 +1,8 @@
 ---
 import { Image } from "astro:assets";
-import BackLink from "@/components/back-link.astro";
 import Card from "@/components/card.astro";
 import Page from "@/components/page.astro";
+import PillLink from "@/components/pill-link.astro";
 import Section from "@/components/section.astro";
 import TextLink from "@/components/text-link.astro";
 import type { App } from "@/data/apps";
@@ -25,7 +25,9 @@ const { app, lead, store } = Astro.props;
   description={`${app.name}のサポート情報とプライバシーポリシーを掲載しています。`}
   title={`${app.name} | CHIJI TECH`}
 >
-  <nav class="mb-12 flex justify-end"><BackLink /></nav>
+  <nav class="mb-12 flex justify-end">
+    <PillLink href="/" text="トップへ" />
+  </nav>
 
   <header class="flex flex-col items-center py-10 text-center sm:py-14">
     <div class="relative">
