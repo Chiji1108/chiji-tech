@@ -52,9 +52,9 @@ export const pochical = {
   badges: [
     "SwiftUI",
     "SQLiteData",
+    "WidgetKit",
     "Jetpack Compose",
     "Durable Objects",
-    "D1",
     "ConnectRPC",
     "Astro",
   ],
