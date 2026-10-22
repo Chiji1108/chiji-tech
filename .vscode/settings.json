@@ -21,6 +21,9 @@
   "[css]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
+  "[astro]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
   "[graphql]": {
     "editor.defaultFormatter": "biomejs.biome"
   },

@@ -1,0 +1,26 @@
+---
+import { Font } from "astro:assets";
+import "@/styles/global.css";
+
+interface Props {
+  description: string;
+  title: string;
+}
+
+const { description, title } = Astro.props;
+---
+
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>{title}</title>
+    <meta content={description} name="description">
+    <link href="/favicon.ico" rel="icon" sizes="any">
+    <Font cssVariable="--font-geist-sans" preload />
+    <Font cssVariable="--font-geist-mono" />
+  </head>
+  <body class="antialiased">
+    <slot />
+  </body>
+</html>

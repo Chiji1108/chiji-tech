@@ -1,0 +1,158 @@
+---
+import Card from "@/components/card.astro";
+import Definitions from "@/components/definitions.astro";
+import Page from "@/components/page.astro";
+import PageHeader from "@/components/page-header.astro";
+import Section from "@/components/section.astro";
+import TextLink from "@/components/text-link.astro";
+import { CONTACT_EMAIL } from "@/data/contact";
+
+const plans = [
+  {
+    name: "ライト",
+    body: "1ページ（LP）相当。既存素材（文章・画像）が揃っている方向け。",
+    price: "目安：¥80,000〜",
+  },
+  {
+    name: "スタンダード",
+    body: "複数ページ構成（例：トップ/診療案内/アクセス/お知らせ等）。",
+    price: "目安：¥300,000〜",
+  },
+  {
+    name: "保守・更新",
+    body: "月額プラン内に軽微な修正（文言更新・画像差し替えなど）が含まれます。ページ追加などの大規模な修正は都度見積もりです。",
+    price: "目安：月額（軽微修正込み） + 大規模修正は¥10,000/回〜（都度見積）",
+  },
+];
+
+const text = "text-sm text-zinc-600 leading-relaxed dark:text-zinc-400";
+const note = "text-sm text-zinc-500 leading-relaxed dark:text-zinc-500";
+---
+
+<Page
+  description="CHIJI TECHのホームページ制作サービス。制作の流れ、料金目安、納期、制作事例（青木内科クリニック様）をご紹介します。"
+  title="ホームページ制作 | CHIJI TECH"
+>
+  <PageHeader
+    lead="小〜中規模のホームページ制作を、ヒアリングから公開まで一貫して対応します。医療関係の制作も多く、必要に応じて更新運用まで含めてご提案します。"
+    title="ホームページ制作"
+  />
+
+  <Section title="提供内容">
+    <Card>
+      <ul class:list={["space-y-2", text]}>
+        <li>
+          - 事前ヒアリング（目的・ターゲット・掲載内容の整理、参考サイト共有）
+        </li>
+        <li>- デザイン/構成案の作成（ページ構成・導線設計）</li>
+        <li>- 実装（レスポンシブ対応、基本的なSEO配慮）</li>
+        <li>- 公開（ドメイン/ホスティング設定のサポート）</li>
+        <li>- 更新運用（必要に応じて保守・軽微改修）</li>
+      </ul>
+    </Card>
+  </Section>
+
+  <Section title="制作事例（埼玉県）">
+    <Card>
+      <p class={text}>
+        <span class="font-medium text-zinc-900 dark:text-zinc-100"
+          >青木内科クリニック様</span
+        >のホームページ制作を担当しました。
+      </p>
+      <p class:list={["mt-3", text]}>
+        サイト：<TextLink
+          external
+          href="https://aoki-naika-clinic.jp/"
+          text="aoki-naika-clinic.jp"
+        />
+      </p>
+      <p class:list={["mt-3", note]}>
+        ※掲載内容は許可を得た範囲で紹介しています。ロゴ・写真等の権利は各権利者に帰属します。
+      </p>
+    </Card>
+  </Section>
+
+  <Section title="料金目安">
+    <div class="grid gap-4">
+      {plans.map((plan) => (
+          <Card>
+            <h3 class="font-medium text-zinc-900 dark:text-zinc-100">
+              {plan.name}
+            </h3>
+            <p class:list={["mt-2", text]}>{plan.body}</p>
+            <p class="mt-3 font-medium text-sm text-zinc-900 dark:text-zinc-100">
+              {plan.price}
+            </p>
+          </Card>
+        ))}
+    </div>
+    <p class:list={["mt-4", note]}>
+      ※上記は目安です。ページ数・素材の有無・機能要件（予約導線、ブログ、お問い合わせ等）により変動します。
+    </p>
+  </Section>
+
+  <Section title="納期目安">
+    <Card>
+      <ul class:list={["space-y-2", text]}>
+        <li>- ライト：1ヶ月</li>
+        <li>- スタンダード：2〜3ヶ月</li>
+        <li>- 素材未確定/撮影/文章作成が必要な場合：要相談</li>
+      </ul>
+    </Card>
+  </Section>
+
+  <Section title="お支払い">
+    <Card>
+      <p class={text}>
+        クレジットカード決済（Stripe）に対応します。請求タイミングや分割（着手金+検収後など）は案件によりご相談ください。
+      </p>
+    </Card>
+  </Section>
+
+  <Section title="キャンセル・返金">
+    <Card>
+      <p class={text}>
+        着手前のキャンセルは原則可能です。着手後は、進行状況に応じて実費・工数分をご請求させていただく場合があります。詳細はお見積もり時に明記します。
+      </p>
+    </Card>
+  </Section>
+
+  <Section title="事業者情報">
+    <Card>
+      <Definitions
+        items={[
+          { term: "屋号", value: "CHIJI TECH" },
+          {
+            term: "お問い合わせ",
+            value: CONTACT_EMAIL,
+            href: `mailto:${CONTACT_EMAIL}`,
+          },
+          {
+            term: "特商法表記",
+            value: "特定商取引法に基づく表記",
+            href: "/tokusho",
+          },
+        ]}
+      />
+    </Card>
+    <p class:list={["mt-4", note]}>
+      ※住所・電話番号等は、必要に応じて個別にご案内します。
+    </p>
+  </Section>
+
+  <Section id="contact" title="お問い合わせ">
+    <Card>
+      <p class={text}>
+        ご相談はメールでお送りください。2〜3営業日を目安にご返信します。
+      </p>
+      <div class="mt-4 flex flex-col gap-3 sm:flex-row">
+        <a
+          class="inline-flex items-center justify-center rounded-full bg-zinc-900 px-5 py-2.5 font-medium text-sm text-white shadow-sm hover:bg-zinc-800 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200"
+          href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("ホームページ制作のご相談")}`}
+        >
+          メールで相談する
+        </a>
+      </div>
+    </Card>
+  </Section>
+</Page>
