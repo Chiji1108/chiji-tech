@@ -59,4 +59,4 @@ export const pochical = {
   ],
 } satisfies App;
 
-export const apps: App[] = [paylog, drivecost, pochical];
+export const apps: App[] = [pochical, paylog, drivecost];
