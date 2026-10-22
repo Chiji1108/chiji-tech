@@ -45,8 +45,7 @@ export const drivecost = {
 
 export const pochical = {
   name: "ポチカル",
-  summary:
-    "勤務を選んで、日付をポチポチ。家族や友だちとも共有できるシフトカレンダーアプリです。",
+  summary: "家族や友だちとも共有できるシフトカレンダーアプリです。",
   href: "https://pochical.app",
   icon: pochicalIcon,
   badges: [
