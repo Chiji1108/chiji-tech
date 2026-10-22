@@ -51,11 +51,11 @@ export const pochical = {
   icon: pochicalIcon,
   badges: [
     "SwiftUI",
+    "SQLiteData",
     "Jetpack Compose",
-    "Cloudflare Workers",
     "Durable Objects",
-    "Connect",
-    "Protocol Buffers",
+    "D1",
+    "ConnectRPC",
     "Astro",
   ],
 } satisfies App;
