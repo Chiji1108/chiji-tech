@@ -80,13 +80,13 @@ const driveCostTechBadges = [
 ];
 
 const pochicalTechBadges = [
-  "Expo",
-  "Jazz.tools",
-  "local-first",
-  "HeroUI",
-  "Uniwind",
-  "FlashList",
-  "Convex",
+  "SwiftUI",
+  "Jetpack Compose",
+  "Cloudflare Workers",
+  "Durable Objects",
+  "Connect",
+  "Protocol Buffers",
+  "Astro",
 ];
 
 const workItems = [
@@ -122,7 +122,7 @@ const workItems = [
       {
         name: "ポチカレ",
         description: "看護師のシフト管理と共有をシンプルにするアプリです。",
-        href: "/pochical",
+        href: "https://pochical.app",
         image: "/pochical.png",
         techBadges: pochicalTechBadges,
       },
