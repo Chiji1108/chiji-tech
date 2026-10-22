@@ -1,0 +1,87 @@
+---
+import Card from "@/components/card.astro";
+import Definitions from "@/components/definitions.astro";
+import Page from "@/components/page.astro";
+import PageHeader from "@/components/page-header.astro";
+import Section from "@/components/section.astro";
+
+const EMAIL = "me@chiji.tech";
+
+const sections = [
+  {
+    title: "提供する役務",
+    body: "ホームページ制作（要件整理、設計、デザイン、実装、公開作業、必要に応じた保守運用）。",
+  },
+  {
+    title: "販売価格（役務の対価）",
+    body: "内容によりお見積りとなります。目安：ライト ¥80,000〜 / スタンダード ¥300,000〜。",
+  },
+  {
+    title: "商品代金以外の必要料金",
+    body: "銀行振込の場合の振込手数料、ならびに制作に付随して発生する実費（例：有料素材、外部サービス利用料等）がある場合は事前にお知らせします。",
+  },
+  {
+    title: "支払方法",
+    body: "クレジットカード決済（Stripe）または銀行振込（ご希望時）。",
+  },
+  {
+    title: "支払時期",
+    body: "お見積り時に定める支払期日までにお支払いください（例：着手前の一括、または着手金＋納品時等）。",
+  },
+  {
+    title: "役務の提供時期",
+    body: "原則として入金確認後に着手します。納期は内容により異なり、目安は1〜3ヶ月です。",
+  },
+  {
+    title: "キャンセル・返金",
+    body: "着手前のキャンセルは原則可能です。着手後は、進行状況に応じて実費・工数分をご請求させていただく場合があります。詳細はお見積もり時に明記します。",
+  },
+  {
+    title: "表現および役務に関する注意書き",
+    body: "役務の性質上、制作物・成果はお客様のご要望や素材のご提供状況等により変動します。提供内容・仕様・成果物の範囲はお見積りおよび合意内容に従います。",
+  },
+];
+---
+
+<Page
+  description="特定商取引法に基づく表記（事業者情報、販売価格、支払い方法、キャンセル等）。"
+  title="特定商取引法に基づく表記 | CHIJI TECH"
+>
+  <PageHeader
+    lead="本ページは、特定商取引法に基づき、提供する役務および取引条件等を表示しています。"
+    title="特定商取引法に基づく表記"
+  />
+
+  <Section title="事業者情報">
+    <Card>
+      <Definitions
+        items={[
+          { term: "屋号", value: "CHIJI TECH" },
+          { term: "運営統括責任者", value: "千々岩真吾" },
+          {
+            term: "所在地",
+            value: "〒223-0066 神奈川県横浜市港北区高田西1-2-39-505",
+          },
+          { term: "電話番号", value: "090-2446-1108" },
+          { term: "メールアドレス", value: EMAIL, href: `mailto:${EMAIL}` },
+        ]}
+      />
+    </Card>
+  </Section>
+
+  {sections.map((section) => (
+      <Section title={section.title}>
+        <Card>
+          <p class="text-sm text-zinc-600 leading-relaxed dark:text-zinc-400">
+            {section.body}
+          </p>
+        </Card>
+      </Section>
+    ))}
+
+  <footer
+    class="mt-12 border-zinc-200 border-t pt-6 text-sm text-zinc-500 dark:border-zinc-800 dark:text-zinc-500"
+  >
+    <p>最終更新日：2025年12月20日</p>
+  </footer>
+</Page>

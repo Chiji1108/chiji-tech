@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "chiji-tech",
+  // No Worker code: Astro builds every page ahead of time, and Workers'
+  // static assets serve dist/, with 404.html for paths it does not have.
+  "compatibility_date": "2026-10-15",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page"
+  },
+  // Branches other than main are uploaded as Worker Previews by Workers
+  // Builds (`wrangler preview`), which needs this block, even empty.
+  "previews": {}
+}

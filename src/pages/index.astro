@@ -1,0 +1,215 @@
+---
+import { Image } from "astro:assets";
+import me from "@/assets/me.jpg";
+import Page from "@/components/page.astro";
+import { apps } from "@/data/apps";
+import { socials } from "@/data/socials";
+
+interface Work {
+  badge: string;
+  cta?: { href: string; label: string };
+  description: string;
+  showApps?: boolean;
+  tags?: string[];
+  title: string;
+}
+
+const works: Work[] = [
+  {
+    title: "ソフトウェア開発",
+    badge: "本業",
+    description:
+      "学生の頃から趣味がソフトウェアサービス開発だったので、そのままお仕事になりました。Web系フルスタックエンジニアという形で、新規事業のゼロイチが得意です。ネイティブモバイルアプリ開発もします。個人開発からチーム開発、フロントエンド、バックエンド、インフラは勿論、要件定義からリファクタリング、エンジニア採用まで何でもやってましたが、やっぱり一番好きなのは、最新の技術を使ってみんなで気持ちよく開発することです。推しワードはless is moreとdeveloper experienceです。",
+    tags: [
+      "Next.js",
+      "TanStack Start",
+      "ElysiaJS",
+      "Convex",
+      "Turso",
+      "Jazz.tools",
+      "Upstash",
+      "Clerk",
+      "PostHog",
+      "Vercel",
+      "Cloudflare",
+      "Expo",
+      "SwiftUI",
+    ],
+    showApps: true,
+  },
+  {
+    title: "ホームページ制作",
+    badge: "副業",
+    description:
+      "テンプレートを使った小規模から中規模までのホームページ制作をしてます。制作に付随するヒアリングから内容の提案など諸々全てやります。それだけでなくホームページに関連して、アクセス動画の制作や地図制作、はたまたイメージソングの音楽制作など何でもしてます。医療関係の方が多いです。",
+    cta: { label: "詳細を見る", href: "/hp" },
+  },
+  {
+    title: "IT何でも屋",
+    badge: "非営利",
+    description:
+      "ITに疎いから自分では出来ないけど、業者に頼むほどでもないな…っていう方々向けに、簡単なDX導入や、ITに関する何でも屋さんをしてます。ドメイン、メールアドレスの取得から、パソコン自体のお掃除やパーツ交換、ソフトのアップデートから新ソフトの使い方のレクチャー、MiniDVテープやVHSテープのダビングなど何でもやります。家族経営の方が多いです。",
+  },
+];
+
+const pillLink =
+  "rounded-full border border-zinc-200 bg-white px-4 py-2 text-sm text-zinc-700 shadow-sm hover:bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:bg-zinc-800";
+---
+
+<Page
+  description="身近な人の悩みを解決するサービス開発が生き甲斐のソフトウェアエンジニア"
+  title="Shingo Chijiiwa / CHIJI TECH"
+>
+  <section class="flex flex-col items-center gap-6">
+    <div class="relative">
+      <Image
+        alt="Shingo Chijiiwa"
+        class="rounded-full ring-4 ring-zinc-100 dark:ring-zinc-800"
+        densities={[1, 2]}
+        height={120}
+        priority
+        src={me}
+        width={120}
+      />
+      <div
+        class="absolute -inset-1 -z-10 rounded-full bg-linear-to-br from-zinc-200 to-zinc-300 opacity-50 blur-lg dark:from-zinc-700 dark:to-zinc-800"
+      ></div>
+    </div>
+
+    <h1 class="font-semibold text-2xl tracking-tight">Shingo Chijiiwa</h1>
+
+    <div class="flex gap-4">
+      {socials.map((social) => (
+          <a
+            class="rounded-full p-2 text-zinc-500 transition-colors hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-100"
+            href={social.href}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <svg
+              aria-hidden="true"
+              class="h-5 w-5"
+              fill="currentColor"
+              viewBox={social.viewBox}
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              {social.paths.map((d) => <path d={d} />)}
+            </svg>
+            <span class="sr-only">{social.name}</span>
+          </a>
+        ))}
+    </div>
+  </section>
+
+  <section class="mt-12">
+    <p
+      class="text-pretty text-center text-zinc-600 leading-relaxed dark:text-zinc-400"
+    >
+      身近な人の悩みを解決するサービス開発が生き甲斐です。昔からモノづくりが好きで、それに関連した技術を学ぶことが趣味です。時々アウトプットもします。
+    </p>
+    <p
+      class="text-pretty text-center text-zinc-600 leading-relaxed dark:text-zinc-400"
+    >
+      あとサウナとシーシャとドライブが好きです。
+    </p>
+  </section>
+
+  <section class="mt-16">
+    <h2
+      class="mb-8 text-center font-semibold text-lg text-zinc-900 tracking-tight dark:text-zinc-100"
+    >
+      CHIJI TECH 事業
+    </h2>
+
+    <div class="space-y-8">
+      {works.map((work) => (
+          <article class="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900">
+            <div class="mb-3 flex items-center gap-3">
+              <h3 class="font-medium text-zinc-900 dark:text-zinc-100">
+                {work.title}
+              </h3>
+              <span class="rounded-full bg-zinc-100 px-2.5 py-0.5 font-medium text-xs text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400">
+                {work.badge}
+              </span>
+            </div>
+
+            <p class="text-pretty text-sm text-zinc-600 leading-relaxed dark:text-zinc-400">
+              {work.description}
+            </p>
+
+            {work.tags !== undefined && (
+              <div class="mt-4 flex flex-wrap gap-2">
+                {work.tags.map((tag) => (
+                  <span class="rounded-md bg-zinc-50 px-2 py-1 font-mono text-xs text-zinc-500 dark:bg-zinc-800/50 dark:text-zinc-500">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
+
+            {work.showApps === true && (
+              <div class="mt-6 space-y-5 border-zinc-200 border-t pt-5 dark:border-zinc-800">
+                {apps.map((app) => (
+                  <div class="flex flex-col gap-4 sm:flex-row sm:items-start">
+                    <Image
+                      alt={app.name}
+                      class="rounded-2xl shadow-sm ring-1 ring-zinc-200 dark:ring-zinc-800"
+                      densities={[1, 2]}
+                      height={64}
+                      src={app.icon}
+                      width={64}
+                    />
+                    <div class="min-w-0 flex-1">
+                      <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                        <h4 class="font-medium text-zinc-900 dark:text-zinc-100">
+                          {app.name}
+                        </h4>
+                        <a
+                          class={`inline-flex w-fit items-center justify-center ${pillLink}`}
+                          href={app.href}
+                        >
+                          詳細を見る
+                        </a>
+                      </div>
+                      <p class="mt-2 text-pretty text-sm text-zinc-600 leading-relaxed dark:text-zinc-400">
+                        {app.summary}
+                      </p>
+                      <div class="mt-4 flex flex-wrap gap-2">
+                        {app.badges.map((badge) => (
+                          <span class="rounded-md border border-zinc-200 bg-zinc-50 px-2 py-1 font-mono text-xs text-zinc-500 dark:border-zinc-800 dark:bg-zinc-800/50 dark:text-zinc-500">
+                            {badge}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {work.cta !== undefined && (
+              <div class="mt-4">
+                <a
+                  class={`inline-flex items-center justify-center ${pillLink}`}
+                  href={work.cta.href}
+                >
+                  {work.cta.label}
+                </a>
+              </div>
+            )}
+          </article>
+        ))}
+    </div>
+  </section>
+
+  <footer
+    class="mt-16 flex items-center justify-center gap-4 text-sm text-zinc-500 dark:text-zinc-400"
+  >
+    <a
+      class="underline underline-offset-4 hover:text-zinc-700 dark:hover:text-zinc-300"
+      href="/tokusho"
+    >
+      特定商取引法に基づく表記
+    </a>
+  </footer>
+</Page>

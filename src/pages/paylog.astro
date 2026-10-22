@@ -1,0 +1,19 @@
+---
+import { paylog } from "@/data/apps";
+import AppPage from "@/layouts/app-page.astro";
+---
+
+<AppPage
+  app={paylog}
+  lead="サブスク・クレジットカード・銀行口座などの支払い情報を整理・記録できるアプリです。"
+  store={{
+    badge: { alt: "App Storeからダウンロード", src: "/appstore.svg", width: 109 },
+    href: "https://apps.apple.com/jp/app/paylog-%E6%94%AF%E6%89%95%E3%81%84%E6%83%85%E5%A0%B1%E3%81%AE%E6%95%B4%E7%90%86/id6763954131",
+    label: "PayLogをApp Storeで見る",
+  }}
+>
+  <p>
+    PayLogは、ユーザーのデータを外部サーバーへ送信しません。入力された情報はユーザーの端末内、およびiCloud同期機能を通じて保存されます。
+  </p>
+  <p>第三者へのデータ提供は行いません。</p>
+</AppPage>

@@ -1,0 +1,19 @@
+---
+import { drivecost } from "@/data/apps";
+import AppPage from "@/layouts/app-page.astro";
+---
+
+<AppPage
+  app={drivecost}
+  lead="給油時に走行距離と料金を記録し、実燃費やドライブ時のガソリン代を計算できるシンプルなアプリです。"
+  store={{
+    badge: { alt: "Google Playで手に入れよう", src: "/googleplay.svg", width: 135 },
+    href: "https://play.google.com/store/apps/details?id=tech.chiji.drivecost",
+    label: "DriveCostをGoogle Playで見る",
+  }}
+>
+  <p>
+    DriveCostは、通信機能を使用しない完全オフラインアプリです。入力された走行距離、給油量、料金などの記録はユーザーの端末内に保存され、外部サーバーへ送信されることはありません。
+  </p>
+  <p>DriveCostは、個人情報を収集しません。第三者へのデータ提供も行いません。</p>
+</AppPage>
