@@ -8,7 +8,12 @@
     "directory": "./dist",
     "not_found_handling": "404-page"
   },
+  // The site is chiji.tech alone; its workers.dev address would only show
+  // the same pages twice.
+  "routes": [{ "pattern": "chiji.tech", "custom_domain": true }],
+  "workers_dev": false,
   // Branches other than main are uploaded as Worker Previews by Workers
-  // Builds (`wrangler preview`), which needs this block, even empty.
+  // Builds (`wrangler preview`), seen at <branch>-chiji-tech.chiji.workers.dev.
+  "preview_urls": true,
   "previews": {}
 }
