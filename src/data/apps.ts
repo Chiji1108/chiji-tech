@@ -72,8 +72,9 @@ export const deadlockJimaku = {
     "Svelte",
     "Astro",
     "Hono",
-    "Cloudflare Workers",
-    "D1",
+    "GPT-Live-Transcribe",
+    "GPT-Transcribe",
+    "GPT-6.1 Terra",
   ],
 } satisfies App;
 
