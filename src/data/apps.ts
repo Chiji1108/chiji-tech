@@ -1,4 +1,5 @@
 import type { ImageMetadata } from "astro";
+import deadlockJimakuIcon from "@/assets/deadlock-jimaku.png";
 import drivecostIcon from "@/assets/drivecost.png";
 import paylogIcon from "@/assets/paylog.png";
 import pochicalIcon from "@/assets/pochical.png";
@@ -59,4 +60,21 @@ export const pochical = {
   ],
 } satisfies App;
 
-export const apps: App[] = [pochical, paylog, drivecost];
+export const deadlockJimaku = {
+  name: "デドロ字幕",
+  summary:
+    "Deadlockの配信に、ふりがな付きの字幕と翻訳を重ねられる配信者向けアプリです。",
+  href: "https://jimaku.deadlock.jp",
+  icon: deadlockJimakuIcon,
+  badges: [
+    "Tauri",
+    "Rust",
+    "Svelte",
+    "Astro",
+    "Hono",
+    "Cloudflare Workers",
+    "D1",
+  ],
+} satisfies App;
+
+export const apps: App[] = [pochical, deadlockJimaku, paylog, drivecost];
