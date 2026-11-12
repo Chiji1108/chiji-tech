@@ -1,6 +1,7 @@
 import type { ImageMetadata } from "astro";
 import deadlockJimakuIcon from "@/assets/deadlock-jimaku.png";
 import drivecostIcon from "@/assets/drivecost.png";
+import myHomeIcon from "@/assets/my-home.png";
 import paylogIcon from "@/assets/paylog.png";
 import pochicalIcon from "@/assets/pochical.png";
 
@@ -78,4 +79,25 @@ export const deadlockJimaku = {
   ],
 } satisfies App;
 
-export const apps: App[] = [pochical, deadlockJimaku, paylog, drivecost];
+export const myHome = {
+  name: "My Home",
+  summary: "自宅兼仕事場の間取りを再現した、歩いて回れる3Dモデルルームです。",
+  href: "https://home.chiji.tech",
+  icon: myHomeIcon,
+  badges: [
+    "react-three-fiber",
+    "three.js",
+    "drei",
+    "React",
+    "Vite",
+    "Cloudflare Workers",
+  ],
+} satisfies App;
+
+export const apps: App[] = [
+  pochical,
+  deadlockJimaku,
+  paylog,
+  drivecost,
+  myHome,
+];
