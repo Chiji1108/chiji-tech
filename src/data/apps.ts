@@ -8,6 +8,7 @@ import paylogIcon from "@/assets/paylog.png";
 import paylogShare from "@/assets/paylog-share.png";
 import pochicalIcon from "@/assets/pochical.png";
 import pochicalShare from "@/assets/pochical-share.png";
+import type { Locale } from "@/i18n";
 
 export interface App {
   badges: string[];
@@ -17,13 +18,15 @@ export interface App {
   image?: ImageMetadata;
   name: string;
   repo: string;
-  summary: string;
+  summary: Record<Locale, string>;
 }
 
 export const paylog = {
   name: "PayLog",
-  summary:
-    "サブスク・クレジットカード・銀行口座などの支払い情報を整理・記録できる、iPhone・iPhone Duo・iPad対応のアプリです。",
+  summary: {
+    ja: "サブスク・クレジットカード・銀行口座などの支払い情報を整理・記録できる、iPhone・iPhone Duo・iPad対応のアプリです。",
+    en: "An app for iPhone, iPhone Duo and iPad that organises and records payment details such as subscriptions, credit cards and bank accounts.",
+  },
   href: "/paylog",
   repo: "https://github.com/Chiji1108/PayLog",
   icon: paylogIcon,
@@ -42,8 +45,10 @@ export const paylog = {
 
 export const drivecost = {
   name: "DriveCost",
-  summary:
-    "給油記録から実燃費を計算し、ドライブ時のガソリン代を見積もれるシンプルなAndroidアプリです。",
+  summary: {
+    ja: "給油記録から実燃費を計算し、ドライブ時のガソリン代を見積もれるシンプルなAndroidアプリです。",
+    en: "A simple Android app that works out real fuel economy from fill-up records and estimates the fuel cost of a drive.",
+  },
   href: "/drivecost",
   repo: "https://github.com/Chiji1108/DriveCost",
   icon: drivecostIcon,
@@ -58,7 +63,10 @@ export const drivecost = {
 
 export const pochical = {
   name: "ポチカル",
-  summary: "家族や友だちとも共有できるシフトカレンダーアプリです。",
+  summary: {
+    ja: "家族や友だちとも共有できるシフトカレンダーアプリです。",
+    en: "A shift calendar app you can share with family and friends.",
+  },
   href: "https://pochical.app",
   repo: "https://github.com/Chiji1108/pochical",
   icon: pochicalIcon,
@@ -76,8 +84,10 @@ export const pochical = {
 
 export const deadlockJimaku = {
   name: "デドロ字幕",
-  summary:
-    "Deadlockの配信に、ふりがな付きの字幕と翻訳を重ねられる配信者向けアプリです。",
+  summary: {
+    ja: "Deadlockの配信に、ふりがな付きの字幕と翻訳を重ねられる配信者向けアプリです。",
+    en: "An app for streamers that overlays captions with furigana and translations on Deadlock streams.",
+  },
   href: "https://jimaku.deadlock.jp",
   repo: "https://github.com/Chiji1108/deadlock-jimaku",
   icon: deadlockJimakuIcon,
@@ -96,12 +106,22 @@ export const deadlockJimaku = {
 
 export const myHome = {
   name: "My Home",
-  summary: "自宅兼仕事場の間取りを再現した、歩いて回れる3Dモデルルームです。",
+  summary: {
+    ja: "自宅兼仕事場の間取りを再現した、歩いて回れる3Dモデルルームです。",
+    en: "A walk-through 3D model of my home and workplace, recreated from its floor plan.",
+  },
   href: "https://home.chiji.tech",
   repo: "https://github.com/Chiji1108/my-home",
   icon: myHomeIcon,
   image: myHomeShare,
-  badges: ["react-three-fiber", "three.js", "drei", "React", "Vite"],
+  badges: [
+    "react-three-fiber",
+    "three.js",
+    "drei",
+    "postprocessing",
+    "React",
+    "Vite",
+  ],
 } satisfies App;
 
 export const apps: App[] = [

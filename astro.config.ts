@@ -7,6 +7,8 @@ export default defineConfig({
   // them; Workers' static assets serve them without the slash.
   build: { format: "file" },
   trailingSlash: "never",
+  // Japanese keeps the addresses it has; English sits under /en.
+  i18n: { defaultLocale: "ja", locales: ["ja", "en"] },
   fonts: [
     {
       provider: fontProviders.google(),
