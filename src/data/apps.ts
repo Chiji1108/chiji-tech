@@ -10,6 +10,7 @@ export interface App {
   href: string;
   icon: ImageMetadata;
   name: string;
+  repo: string;
   summary: string;
 }
 
@@ -18,6 +19,7 @@ export const paylog = {
   summary:
     "サブスク・クレジットカード・銀行口座などの支払い情報を整理・記録できるiOSアプリです。",
   href: "/paylog",
+  repo: "https://github.com/Chiji1108/PayLog",
   icon: paylogIcon,
   badges: [
     "SwiftUI",
@@ -35,6 +37,7 @@ export const drivecost = {
   summary:
     "給油記録から実燃費を計算し、ドライブ時のガソリン代を見積もれるシンプルなAndroidアプリです。",
   href: "/drivecost",
+  repo: "https://github.com/Chiji1108/DriveCost",
   icon: drivecostIcon,
   badges: [
     "Jetpack Compose",
@@ -49,6 +52,7 @@ export const pochical = {
   name: "ポチカル",
   summary: "家族や友だちとも共有できるシフトカレンダーアプリです。",
   href: "https://pochical.app",
+  repo: "https://github.com/Chiji1108/pochical",
   icon: pochicalIcon,
   badges: [
     "SwiftUI",
@@ -66,6 +70,7 @@ export const deadlockJimaku = {
   summary:
     "Deadlockの配信に、ふりがな付きの字幕と翻訳を重ねられる配信者向けアプリです。",
   href: "https://jimaku.deadlock.jp",
+  repo: "https://github.com/Chiji1108/deadlock-jimaku",
   icon: deadlockJimakuIcon,
   badges: [
     "Tauri",
@@ -83,6 +88,7 @@ export const myHome = {
   name: "My Home",
   summary: "自宅兼仕事場の間取りを再現した、歩いて回れる3Dモデルルームです。",
   href: "https://home.chiji.tech",
+  repo: "https://github.com/Chiji1108/my-home",
   icon: myHomeIcon,
   badges: [
     "react-three-fiber",
