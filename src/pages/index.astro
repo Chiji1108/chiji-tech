@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import { siGithub } from "simple-icons";
 import me from "@/assets/me.jpg";
 import Page from "@/components/page.astro";
 import PillLink from "@/components/pill-link.astro";
@@ -132,9 +133,26 @@ const works: Work[] = [
             />
             <div class="min-w-0 flex-1">
               <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                <h3 class="font-medium text-zinc-900 dark:text-zinc-100">
-                  {app.name}
-                </h3>
+                <div class="flex items-center gap-1">
+                  <h3 class="font-medium text-zinc-900 dark:text-zinc-100">
+                    {app.name}
+                  </h3>
+                  <a
+                    class="rounded-full p-1.5 text-zinc-500 transition-colors hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-100"
+                    href={app.repo}
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="h-4 w-4"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d={siGithub.path} />
+                    </svg>
+                    <span class="sr-only">{app.name}のGitHubリポジトリ</span>
+                  </a>
+                </div>
                 <PillLink
                   class="inline-flex w-fit items-center justify-center"
                   href={app.href}
