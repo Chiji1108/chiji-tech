@@ -100,7 +100,7 @@ export const home: Record<Locale, Home> = {
         title: "Software development",
         badge: "Main work",
         description:
-          "Building software services was my hobby as a student, and it simply became my job. I work as a full-stack web engineer and am at my best taking a new product from zero to one. I build native mobile apps too. I have done a bit of everything, from solo projects to team projects, across front end, back end and infrastructure, and from requirements through refactoring to hiring engineers. What I love most, though, is building with the latest technology in a way that feels good for the whole team. My favourite phrases are “less is more” and “developer experience”.",
+          "Building software services was my hobby as a student, and it simply became my job. I work as a full-stack web engineer and am at my best taking a new product from zero to one. I build native mobile apps too. I have done a bit of everything, from solo projects to team projects, across front end, back end and infrastructure, and from requirements through refactoring to hiring engineers. What I love most, though, is building with the latest technology in a way that feels good for the whole team. My favorite phrases are “less is more” and “developer experience.”",
         tags,
       },
       {
