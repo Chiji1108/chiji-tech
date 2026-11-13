@@ -25,7 +25,7 @@ export const paylog = {
   name: "PayLog",
   summary: {
     ja: "サブスク・クレジットカード・銀行口座などの支払い情報を整理・記録できる、iPhone・iPhone Duo・iPad対応のアプリです。",
-    en: "An app for iPhone, iPhone Duo and iPad that organises and records payment details such as subscriptions, credit cards and bank accounts.",
+    en: "An app for iPhone, iPhone Duo and iPad that organizes and records payment details such as subscriptions, credit cards and bank accounts.",
   },
   href: "/paylog",
   repo: "https://github.com/Chiji1108/PayLog",
