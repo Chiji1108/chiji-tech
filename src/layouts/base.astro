@@ -8,6 +8,11 @@ interface Props {
 }
 
 const { description, title } = Astro.props;
+
+// Shared links need whole URLs, not paths. The route, not Astro.url: a build
+// names the file there (/paylog.html), which is not the page's address.
+const url = new URL(Astro.routePattern, Astro.site);
+const image = new URL("/og.png", Astro.site);
 ---
 
 <html lang="ja">
@@ -16,7 +21,19 @@ const { description, title } = Astro.props;
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <title>{title}</title>
     <meta content={description} name="description">
-    <link href="/favicon.ico" rel="icon" sizes="any">
+    <link href={url} rel="canonical">
+    <link href="/favicon.png" rel="icon" type="image/png">
+    <link href="/apple-touch-icon.png" rel="apple-touch-icon">
+    <meta content="website" property="og:type">
+    <meta content="CHIJI TECH" property="og:site_name">
+    <meta content="ja_JP" property="og:locale">
+    <meta content={title} property="og:title">
+    <meta content={description} property="og:description">
+    <meta content={url} property="og:url">
+    <meta content={image} property="og:image">
+    <meta content="1200" property="og:image:width">
+    <meta content="630" property="og:image:height">
+    <meta content="summary_large_image" name="twitter:card">
     <Font cssVariable="--font-geist-sans" preload />
     <Font cssVariable="--font-geist-mono" />
   </head>

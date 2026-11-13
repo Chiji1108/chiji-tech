@@ -24,6 +24,7 @@
     "lefthook": "^2.1.6",
     "simple-icons": "^16.35.0",
     "tailwindcss": "^4.2.4",
+    "takumi-js": "^2.20.0",
     "typescript": "^6.0.3",
     "ultracite": "7.6.2",
     "wrangler": "^4.151.3"
