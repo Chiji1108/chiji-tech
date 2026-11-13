@@ -122,52 +122,65 @@ const works: Work[] = [
 
     <div class="space-y-8">
       {apps.map((app) => (
-          <article class="flex flex-col gap-4 rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md sm:flex-row sm:items-start dark:border-zinc-800 dark:bg-zinc-900">
-            <Image
-              alt={app.name}
-              class="rounded-2xl shadow-sm ring-1 ring-zinc-200 dark:ring-zinc-800"
-              densities={[1, 2]}
-              height={64}
-              src={app.icon}
-              width={64}
-            />
-            <div class="min-w-0 flex-1">
-              <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                <div class="flex items-center gap-1">
-                  <h3 class="font-medium text-zinc-900 dark:text-zinc-100">
-                    {app.name}
-                  </h3>
-                  <a
-                    class="rounded-full p-1.5 text-zinc-500 transition-colors hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-100"
-                    href={app.repo}
-                  >
-                    <svg
-                      aria-hidden="true"
-                      class="h-4 w-4"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d={siGithub.path} />
-                    </svg>
-                    <span class="sr-only">{app.name}のGitHubリポジトリ</span>
-                  </a>
-                </div>
-                <PillLink
-                  class="inline-flex w-fit items-center justify-center"
-                  href={app.href}
-                  text="詳細を見る"
+          <article class="overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition-shadow hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900">
+            {app.image !== undefined && (
+              <Image
+                alt={`${app.name}の紹介画像`}
+                class="w-full border-zinc-200 border-b dark:border-zinc-800"
+                densities={[1, 2]}
+                src={app.image}
+                width={640}
+              />
+            )}
+            <div class="flex flex-col gap-4 p-6 sm:flex-row sm:items-start">
+              {app.image === undefined && (
+                <Image
+                  alt={app.name}
+                  class="rounded-2xl shadow-sm ring-1 ring-zinc-200 dark:ring-zinc-800"
+                  densities={[1, 2]}
+                  height={64}
+                  src={app.icon}
+                  width={64}
                 />
-              </div>
-              <p class="mt-2 text-pretty text-sm text-zinc-600 leading-relaxed dark:text-zinc-400">
-                {app.summary}
-              </p>
-              <div class="mt-4 flex flex-wrap gap-2">
-                {app.badges.map((badge) => (
-                  <span class="rounded-md border border-zinc-200 bg-zinc-50 px-2 py-1 font-mono text-xs text-zinc-500 dark:border-zinc-800 dark:bg-zinc-800/50 dark:text-zinc-500">
-                    {badge}
-                  </span>
-                ))}
+              )}
+              <div class="min-w-0 flex-1">
+                <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                  <div class="flex items-center gap-1">
+                    <h3 class="font-medium text-zinc-900 dark:text-zinc-100">
+                      {app.name}
+                    </h3>
+                    <a
+                      class="rounded-full p-1.5 text-zinc-500 transition-colors hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-100"
+                      href={app.repo}
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="h-4 w-4"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d={siGithub.path} />
+                      </svg>
+                      <span class="sr-only">{app.name}のGitHubリポジトリ</span>
+                    </a>
+                  </div>
+                  <PillLink
+                    class="inline-flex w-fit items-center justify-center"
+                    href={app.href}
+                    text="詳細を見る"
+                  />
+                </div>
+                <p class="mt-2 text-pretty text-sm text-zinc-600 leading-relaxed dark:text-zinc-400">
+                  {app.summary}
+                </p>
+                <div class="mt-4 flex flex-wrap gap-2">
+                  {app.badges.map((badge) => (
+                    <span class="rounded-md border border-zinc-200 bg-zinc-50 px-2 py-1 font-mono text-xs text-zinc-500 dark:border-zinc-800 dark:bg-zinc-800/50 dark:text-zinc-500">
+                      {badge}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           </article>

@@ -1,14 +1,20 @@
 import type { ImageMetadata } from "astro";
 import deadlockJimakuIcon from "@/assets/deadlock-jimaku.png";
+import deadlockJimakuShare from "@/assets/deadlock-jimaku-share.jpg";
 import drivecostIcon from "@/assets/drivecost.png";
 import myHomeIcon from "@/assets/my-home.png";
+import myHomeShare from "@/assets/my-home-share.png";
 import paylogIcon from "@/assets/paylog.png";
+import paylogShare from "@/assets/paylog-share.png";
 import pochicalIcon from "@/assets/pochical.png";
+import pochicalShare from "@/assets/pochical-share.png";
 
 export interface App {
   badges: string[];
   href: string;
   icon: ImageMetadata;
+  // Shown large on the home page; apps without one get the compact card.
+  image?: ImageMetadata;
   name: string;
   repo: string;
   summary: string;
@@ -21,6 +27,7 @@ export const paylog = {
   href: "/paylog",
   repo: "https://github.com/Chiji1108/PayLog",
   icon: paylogIcon,
+  image: paylogShare,
   badges: [
     "SwiftUI",
     "NavigationSplitView",
@@ -55,6 +62,7 @@ export const pochical = {
   href: "https://pochical.app",
   repo: "https://github.com/Chiji1108/pochical",
   icon: pochicalIcon,
+  image: pochicalShare,
   badges: [
     "SwiftUI",
     "SQLiteData",
@@ -73,6 +81,7 @@ export const deadlockJimaku = {
   href: "https://jimaku.deadlock.jp",
   repo: "https://github.com/Chiji1108/deadlock-jimaku",
   icon: deadlockJimakuIcon,
+  image: deadlockJimakuShare,
   badges: [
     "Tauri",
     "Rust",
@@ -91,6 +100,7 @@ export const myHome = {
   href: "https://home.chiji.tech",
   repo: "https://github.com/Chiji1108/my-home",
   icon: myHomeIcon,
+  image: myHomeShare,
   badges: ["react-three-fiber", "three.js", "drei", "React", "Vite"],
 } satisfies App;
 
@@ -98,6 +108,6 @@ export const apps: App[] = [
   pochical,
   deadlockJimaku,
   paylog,
-  drivecost,
   myHome,
+  drivecost,
 ];
