@@ -17,12 +17,13 @@ export interface App {
 export const paylog = {
   name: "PayLog",
   summary:
-    "サブスク・クレジットカード・銀行口座などの支払い情報を整理・記録できるiOSアプリです。",
+    "サブスク・クレジットカード・銀行口座などの支払い情報を整理・記録できる、iPhone・iPhone Duo・iPad対応のアプリです。",
   href: "/paylog",
   repo: "https://github.com/Chiji1108/PayLog",
   icon: paylogIcon,
   badges: [
     "SwiftUI",
+    "NavigationSplitView",
     "SwiftData",
     "Swift Charts",
     "CloudKit",
@@ -90,14 +91,7 @@ export const myHome = {
   href: "https://home.chiji.tech",
   repo: "https://github.com/Chiji1108/my-home",
   icon: myHomeIcon,
-  badges: [
-    "react-three-fiber",
-    "three.js",
-    "drei",
-    "React",
-    "Vite",
-    "Cloudflare Workers",
-  ],
+  badges: ["react-three-fiber", "three.js", "drei", "React", "Vite"],
 } satisfies App;
 
 export const apps: App[] = [
