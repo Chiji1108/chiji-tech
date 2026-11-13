@@ -1,13 +1,18 @@
 ---
 import { Font } from "astro:assets";
+import type { Locale } from "@/i18n";
 import "@/styles/global.css";
 
 interface Props {
+  // The same page in each language, for pages that have more than one.
+  alternates?: Record<Locale, string>;
   description: string;
   title: string;
 }
 
-const { description, title } = Astro.props;
+const { alternates, description, title } = Astro.props;
+const locale = (Astro.currentLocale ?? "ja") as Locale;
+const ogLocales: Record<Locale, string> = { ja: "ja_JP", en: "en_US" };
 
 // Shared links need whole URLs, not paths. The route, not Astro.url: a build
 // names the file there (/paylog.html), which is not the page's address.
@@ -15,18 +20,22 @@ const url = new URL(Astro.routePattern, Astro.site);
 const image = new URL("/og.png", Astro.site);
 ---
 
-<html lang="ja">
+<html lang={locale}>
   <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <title>{title}</title>
     <meta content={description} name="description">
     <link href={url} rel="canonical">
+    {alternates !== undefined &&
+      Object.entries(alternates).map(([lang, path]) => (
+        <link href={new URL(path, Astro.site)} hreflang={lang} rel="alternate" />
+      ))}
     <link href="/favicon.png" rel="icon" type="image/png">
     <link href="/apple-touch-icon.png" rel="apple-touch-icon">
     <meta content="website" property="og:type">
     <meta content="CHIJI TECH" property="og:site_name">
-    <meta content="ja_JP" property="og:locale">
+    <meta content={ogLocales[locale]} property="og:locale">
     <meta content={title} property="og:title">
     <meta content={description} property="og:description">
     <meta content={url} property="og:url">

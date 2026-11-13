@@ -1,0 +1,210 @@
+---
+import { Image } from "astro:assets";
+import { siGithub } from "simple-icons";
+import me from "@/assets/me.jpg";
+import Page from "@/components/page.astro";
+import PillLink from "@/components/pill-link.astro";
+import { apps } from "@/data/apps";
+import { home, homePaths } from "@/data/home";
+import { socials } from "@/data/socials";
+import type { Locale } from "@/i18n";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const text = home[locale];
+---
+
+<Page
+  alternates={homePaths}
+  description={text.description}
+  title="Shingo Chijiiwa / CHIJI TECH"
+>
+  <nav class="mb-12 flex justify-end">
+    <PillLink href={text.other.href} text={text.other.label} />
+  </nav>
+
+  <section class="flex flex-col items-center gap-6">
+    <div class="relative">
+      <Image
+        alt="Shingo Chijiiwa"
+        class="rounded-full ring-4 ring-zinc-100 dark:ring-zinc-800"
+        densities={[1, 2]}
+        height={120}
+        priority
+        src={me}
+        width={120}
+      />
+      <div
+        class="absolute -inset-1 -z-10 rounded-full bg-linear-to-br from-zinc-200 to-zinc-300 opacity-50 blur-lg dark:from-zinc-700 dark:to-zinc-800"
+      ></div>
+    </div>
+
+    <h1 class="font-semibold text-2xl tracking-tight">Shingo Chijiiwa</h1>
+
+    <div class="flex gap-4">
+      {socials.map((social) => (
+          <a
+            class="rounded-full p-2 text-zinc-500 transition-colors hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-100"
+            href={social.href}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <svg
+              aria-hidden="true"
+              class="h-5 w-5"
+              fill="currentColor"
+              viewBox={social.viewBox}
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              {social.paths.map((d) => <path d={d} />)}
+            </svg>
+            <span class="sr-only">{social.name}</span>
+          </a>
+        ))}
+    </div>
+  </section>
+
+  <section class="mt-12">
+    {text.intro.map((paragraph) => (
+        <p class="text-pretty text-center text-zinc-600 leading-relaxed dark:text-zinc-400">
+          {paragraph}
+        </p>
+      ))}
+  </section>
+
+  <section class="mt-16">
+    <h2
+      class="mb-8 text-center font-semibold text-lg text-zinc-900 tracking-tight dark:text-zinc-100"
+    >
+      {text.appsTitle}
+    </h2>
+
+    <div class="space-y-8">
+      {apps.map((app) => (
+          <article class="overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition-shadow hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900">
+            {app.image !== undefined && (
+              <Image
+                alt={text.imageAlt(app.name)}
+                class="w-full border-zinc-200 border-b dark:border-zinc-800"
+                densities={[1, 2]}
+                src={app.image}
+                width={640}
+              />
+            )}
+            <div class="flex flex-col gap-4 p-6 sm:flex-row sm:items-start">
+              {app.image === undefined && (
+                <Image
+                  alt={app.name}
+                  class="rounded-2xl shadow-sm ring-1 ring-zinc-200 dark:ring-zinc-800"
+                  densities={[1, 2]}
+                  height={64}
+                  src={app.icon}
+                  width={64}
+                />
+              )}
+              <div class="min-w-0 flex-1">
+                <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                  <div class="flex items-center gap-1">
+                    <h3 class="font-medium text-zinc-900 dark:text-zinc-100">
+                      {app.name}
+                    </h3>
+                    <a
+                      class="rounded-full p-1.5 text-zinc-500 transition-colors hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-100"
+                      href={app.repo}
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="h-4 w-4"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d={siGithub.path} />
+                      </svg>
+                      <span class="sr-only">{text.repoLabel(app.name)}</span>
+                    </a>
+                  </div>
+                  <PillLink
+                    class="inline-flex w-fit items-center justify-center"
+                    href={app.href}
+                    text={text.details}
+                  />
+                </div>
+                <p class="mt-2 text-pretty text-sm text-zinc-600 leading-relaxed dark:text-zinc-400">
+                  {app.summary[locale]}
+                </p>
+                <div class="mt-4 flex flex-wrap gap-2">
+                  {app.badges.map((badge) => (
+                    <span class="rounded-md border border-zinc-200 bg-zinc-50 px-2 py-1 font-mono text-xs text-zinc-500 dark:border-zinc-800 dark:bg-zinc-800/50 dark:text-zinc-500">
+                      {badge}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </article>
+        ))}
+    </div>
+  </section>
+
+  <section class="mt-16">
+    <h2
+      class="mb-8 text-center font-semibold text-lg text-zinc-900 tracking-tight dark:text-zinc-100"
+    >
+      {text.worksTitle}
+    </h2>
+
+    <div class="space-y-8">
+      {text.works.map((work) => (
+          <article class="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900">
+            <div class="mb-3 flex items-center gap-3">
+              <h3 class="font-medium text-zinc-900 dark:text-zinc-100">
+                {work.title}
+              </h3>
+              <span class="rounded-full bg-zinc-100 px-2.5 py-0.5 font-medium text-xs text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400">
+                {work.badge}
+              </span>
+            </div>
+
+            <p class="text-pretty text-sm text-zinc-600 leading-relaxed dark:text-zinc-400">
+              {work.description}
+            </p>
+
+            {work.tags !== undefined && (
+              <div class="mt-4 flex flex-wrap gap-2">
+                {work.tags.map((tag) => (
+                  <span class="rounded-md bg-zinc-50 px-2 py-1 font-mono text-xs text-zinc-500 dark:bg-zinc-800/50 dark:text-zinc-500">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
+
+            {work.cta !== undefined && (
+              <div class="mt-4">
+                <PillLink
+              class="inline-flex items-center justify-center"
+              href={work.cta.href}
+              text={work.cta.label}
+            />
+              </div>
+            )}
+          </article>
+        ))}
+    </div>
+  </section>
+
+  <footer
+    class="mt-16 flex items-center justify-center gap-4 text-sm text-zinc-500 dark:text-zinc-400"
+  >
+    <a
+      class="underline underline-offset-4 hover:text-zinc-700 dark:hover:text-zinc-300"
+      href="/tokusho"
+    >
+      {text.legal}
+    </a>
+  </footer>
+</Page>
